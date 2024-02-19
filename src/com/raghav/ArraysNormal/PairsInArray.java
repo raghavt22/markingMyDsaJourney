@@ -7,13 +7,41 @@ public class PairsInArray {
 		int[] arr = {2,4,6,8,10};
 		int[] arr1 = {1,-2,6,-1,3};
 		int[] arr2 = {-2,-3,4,-1,-2,1,5,-3};
+		int[] arr3 = {4,2,0,6,3,2,5};
 //		pairsOfArray(arr);
 //		printSubArrays(arr1);
 //		printSubArraysPrefixArrayApproach(arr1);
-		printSubArraysUsingKadanesAlgorithm(arr2);
+//		printSubArraysUsingKadanesAlgorithm(arr2);
+		trappingRainWater(arr3);
 	}
 	
-	private static void printSubArraysUsingKadanesAlgorithm(int[] arr1) {
+	public static void trappingRainWater(int[] arr) {
+		//Medium level question of DSA in LeetCode i.e TrappingRainWater
+		int length = arr.length;
+		int[] leftBound = new int[length];
+		leftBound[0] = arr[0];
+		//preparing auxiliary array for left boundary
+		for(int i=1; i<length; i++) {
+			leftBound[i] = Math.max(arr[i], leftBound[i-1]);
+		}//end left for
+		
+		int[] rightBound = new int[length];
+		rightBound[length-1] = arr[length-1];
+		//preparing auxiliary array for right boundary
+		for(int i=length-2; i>=0; i--) {
+			rightBound[i] = Math.max(arr[i], rightBound[i+1]);
+		}//end left for
+		
+		int trappedWater = 0, totalTrappedWater = 0;
+		//considering width is 1
+		for(int i=0; i<length; i++) {
+			trappedWater = (Math.min(leftBound[i],rightBound[i]) - arr[i]) * 1;
+			totalTrappedWater+=trappedWater;
+		}//end for
+		System.out.println("Total Trapped water inside is :: " + totalTrappedWater);
+	}
+
+	public static void printSubArraysUsingKadanesAlgorithm(int[] arr1) {
 		/*
 		 * KADANE's ALGORITHM SAYS that:- --> Time Complexity will be O(n) much efficient than the other 2 solutions
 		 * 	1. if you have both positive numbers than you'll get the result in positive--> perfect.
@@ -30,7 +58,7 @@ public class PairsInArray {
 		System.out.println("Max Sum in the Sub array :: " + max );
 	}
 
-	private static void printSubArraysPrefixArrayApproach(int[] arr) {
+	public static void printSubArraysPrefixArrayApproach(int[] arr) {
 		//time complexity O(n)2 --> Still we can improve it 
 		int length = arr.length, currSum = 0 ,max = Integer.MIN_VALUE;
 		//creating prefix array 
@@ -52,7 +80,7 @@ public class PairsInArray {
 		System.out.println(" Max in the subArray :: " + max);
 	}//end method
 
-	private static void printSubArrays(int[] arr) {
+	public static void printSubArrays(int[] arr) {
 		//Worst time complexity O(n)3 
 		int length = arr.length, count = 0, sumOfSubArrays = 0 , max = Integer.MIN_VALUE;
 		for(int i=0; i<length; i++) {
@@ -72,7 +100,7 @@ public class PairsInArray {
 		System.out.println("Sub Arrays count :: "+ count + "/ Max in the subArray :: " + max);
 	}//end method
 
-	private static void pairsOfArray(int[] arr) {
+	public static void pairsOfArray(int[] arr) {
 		int length = arr.length; // storing the length so that we calculate it only once
 		/*Requirement to print
 		 * [2,4] [2,6] [2,8] [2,10] 
