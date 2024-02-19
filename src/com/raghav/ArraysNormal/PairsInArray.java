@@ -17,6 +17,16 @@ public class PairsInArray {
 	
 	public static void trappingRainWater(int[] arr) {
 		//Medium level question of DSA in LeetCode i.e TrappingRainWater
+		/*
+		 * Logic to solve this RainWater Problem :-
+		 * We're going to use Auxiliary Arrays for solving the problem
+		 * 1. We will create both leftBoundary an rightBoundary auxiliary arrays of same length having our parameter array.
+		 * 2. Now we will store the max of left boundary and right boundary comparing with each indexes of our array.
+		 * 3. we will now just need to subtract the height of each index i.e value from the minimum of left and right boundary
+		 * 4. we have to store the trapped rain water in a handle and we'll keep adding the result into some other variable
+		 * 5. in our code the variable is Total Trapped Rain Water which will tell us the amount of water that can be trapped.
+		 * 
+		 */
 		int length = arr.length;
 		int[] leftBound = new int[length];
 		leftBound[0] = arr[0];
