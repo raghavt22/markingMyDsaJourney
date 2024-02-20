@@ -10,6 +10,12 @@ public class DivideAndConquer {
 	}//end countArr
 	
 	public static void mergeSort(int[] arr, int startIndex, int endIndex) {
+		/*
+		 * VERY IMPORTANT POINT TO REMEMBER ABOUT MERGE SORT
+		 * TIME COMPLEXITY WILL BE 	nlog(n) --> much efficient
+		 * SPACE COMPLEXITY WILL BE O(n) 
+		 * THUS WHEN WE DON'T HAVE ANY EXTRA SPACE TO WORK WITH, WE SHOULD NOT USE MERGE SORT 
+		 */
 		//base case for avoiding infinite loop of recursion
 		if(startIndex >= endIndex) {
 			return;
