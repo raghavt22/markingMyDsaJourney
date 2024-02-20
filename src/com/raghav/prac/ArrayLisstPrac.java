@@ -42,6 +42,30 @@ class AllMethods{
 		}//end outer for
 		
 		if(possiblePairs > 0)
+			System.out.println("we have " + possiblePairs + " possible pairsgit in out list which have sum equals to " + target);
+		else
+			System.out.println("No possible pairs in out list which have sum equals to " + target);
+	}//end pairSumUsingBruteForce
+	
+	public static void pairSumUsing2PointerApproach(List<Integer> list, int target) {
+		int size = list.size(), possiblePairs=0, lPointer = 0, rPointer = size-1;;
+		//Condition to find pair sum is the list needs to be sorted
+		Collections.sort(list);
+		//we're applying 2 Pointer approach to calculate the possible pairs having sum equals to target
+		while(lPointer < rPointer) {
+			//case 1
+			if((list.get(lPointer) + list.get(rPointer)) == target) {
+				possiblePairs++;
+			}
+			//case 2
+			if((list.get(lPointer) + list.get(rPointer)) < target) {
+				lPointer++;
+			}
+			//case 3
+			else rPointer--;
+		}//end while
+		
+		if(possiblePairs > 0)
 			System.out.println("we have " + possiblePairs + " possible pairs in out list which have sum equals to " + target);
 		else
 			System.out.println("No possible pairs in out list which have sum equals to " + target);
@@ -60,7 +84,8 @@ public class ArrayLisstPrac {
 		list.add(5);
 		
 //		AllMethods.swapUsingCollections(-9, -9, list);
-		AllMethods.pairSumUsingBruteForce(list, 5);
+//		AllMethods.pairSumUsingBruteForce(list, 5);
+		AllMethods.pairSumUsing2PointerApproach(list,1 );
 
 	}//end main
 }//end class
