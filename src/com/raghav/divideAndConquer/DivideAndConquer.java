@@ -9,6 +9,41 @@ public class DivideAndConquer {
 		}//end for
 	}//end countArr
 	
+	public static int searcInRotatedSortedArray(int[] arr, int target , int startIndex , int endIndex) {
+		/*
+		 * TIME COMPLEXITY WILL BE nlog(n)
+		 */
+		//BASE CASE
+		if(startIndex > endIndex) {
+			return -1;
+		}
+		
+		//calculating mid
+		int mid = startIndex + (endIndex - startIndex)/2;
+		
+		if(arr[mid] == target) { // best case where we found the target at mid itself
+			return mid;
+		}//end if 
+		
+		//search on Line1
+		if(arr[startIndex] <= arr[mid]) {
+			if(arr[startIndex] <= target && target <= arr[mid]) {
+				//case a : left search on line 1
+				return searcInRotatedSortedArray(arr, target, startIndex, mid-1);
+			}else
+				//case b : right search on line 2
+				return searcInRotatedSortedArray(arr, target, mid+1, endIndex);
+		}//end if
+		//search on Line2
+		else {
+			if(arr[mid] <= target && target <= arr[endIndex]){
+				return searcInRotatedSortedArray(arr, target, mid+1, endIndex);
+			}else {
+				return searcInRotatedSortedArray(arr, target, startIndex, mid-1);
+			}//end else
+		}// end outer else
+	}//end sorted
+	
 	public static void quickSort(int[] arr, int startIndex, int endIndex) {
 		/*
 		 * VERY IMPORTANT POINT TO REMEMBER ABOUT QUICK SORT
@@ -111,9 +146,11 @@ public class DivideAndConquer {
 
 	public static void main(String[] args) {
 		int[] arr = {6,3,9,5,2,8};
+		int[] arr1 = {4,5,6,7,0,1,2};
 //		mergeSort(arr, 0, arr.length-1);
-		quickSort(arr, 0, arr.length-1);
-		printArr(arr);
+//		quickSort(arr, 0, arr.length-1);
+		System.out.println("Found at :: " + searcInRotatedSortedArray(arr1, 7, 0, arr1.length-1));
+//		printArr(arr);
 	}
 
 }
