@@ -8,13 +8,29 @@ public class PairsInArray {
 		int[] arr1 = {1,-2,6,-1,3};
 		int[] arr2 = {-2,-3,4,-1,-2,1,5,-3};
 		int[] arr3 = {4,2,0,6,3,2,5};
+		int[] arr4 = {7,1,5,3,6,4};
 //		pairsOfArray(arr);
 //		printSubArrays(arr1);
 //		printSubArraysPrefixArrayApproach(arr1);
 //		printSubArraysUsingKadanesAlgorithm(arr2);
-		trappingRainWater(arr3);
+//		trappingRainWater(arr3);
+		buyAndSellStocks(arr4);
 	}
 	
+	private static void buyAndSellStocks(int[] arr) {
+		//profit = sellingPrice(Higher) - buyingPrice(lower)
+		int buyingPrice = Integer.MAX_VALUE, maxProfit = 0;
+		for(int i=0; i<arr.length; i++) {
+			if(buyingPrice < arr[i]) {
+				int profit = arr[i] - buyingPrice; //calculating today's profit
+				maxProfit = Math.max(maxProfit, profit); // procuring global profit in maxProfit variable
+			}else {
+				buyingPrice = arr[i]; //updating buyingPrice variable if it's value is greater than that days value
+			}//end else
+		}//end for
+		System.out.println("Profit earned :: " + maxProfit);
+	}//end buyAndSellStocks
+
 	public static void trappingRainWater(int[] arr) {
 		//Medium level question of DSA in LeetCode i.e TrappingRainWater
 		/*
