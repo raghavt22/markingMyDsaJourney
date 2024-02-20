@@ -9,6 +9,49 @@ public class DivideAndConquer {
 		}//end for
 	}//end countArr
 	
+	public static void quickSort(int[] arr, int startIndex, int endIndex) {
+		/*
+		 * VERY IMPORTANT POINT TO REMEMBER ABOUT QUICK SORT
+		 * TIME COMPLEXITY WILL BE 	nlog(n) --> IN AVERAGE CASES BUT IN WORST IT CAN GO UPTO O(N)2
+		 * SPACE COMPLEXITY WILL BE O(1) MEANS WHILE USING QUICK SORT WE DON'T USE EXTRA SPACES 
+		 * 
+		 * THUS IF WE DON'T HAVE ANY SPACES TO WORK WITH AND STILL WE NEED MUCH EFFICIENT SORTING THAN
+		 * IN THAT CASES WE SHOULD GO FOR QUICK SORT, AND REMEMBER THAT ARE VERY LESS CHANCES TO HIT FOR
+		 * WORST TIME COMPLEXITY OTHERWISE IT ALWAYS PERFORMS WITH IT'S BEST
+		 */
+		
+		//terminating condition for the infinite loop
+		if(startIndex >= endIndex)
+			return;
+		
+		//work 
+		//we're considering our last index is our PIVOT
+		int pIndex = partition(arr,startIndex,endIndex); // will get the right position from partition function
+		quickSort(arr, startIndex, pIndex-1);
+		quickSort(arr, pIndex+1, endIndex);
+	}//end quick sort
+	
+	public static int partition(int[] arr, int startIndex, int endIndex) {
+		int pivot = arr[endIndex]; //here i'm creating my pivot based on which our array will be sorted
+		int i = startIndex-1; // i will work for creating the spaces for the values that are lower than the pivot in the same array
+		
+		for(int j=startIndex; j<endIndex; j++) {
+			if(arr[j] <= pivot) {
+				i++;
+				//swap
+				int temp = arr[j];
+				arr[j] = arr[i];
+				arr[i] = temp;
+			}//end if	
+		}//end for
+		//doing this swap again to put the pivot in the right index
+		i++;
+		int temp = pivot;
+		arr[endIndex] = arr[i];
+		arr[i] = temp;
+		return i; // returning the right position of pivot
+	}//end partition
+	
 	public static void mergeSort(int[] arr, int startIndex, int endIndex) {
 		/*
 		 * VERY IMPORTANT POINT TO REMEMBER ABOUT MERGE SORT
@@ -68,7 +111,8 @@ public class DivideAndConquer {
 
 	public static void main(String[] args) {
 		int[] arr = {6,3,9,5,2,8};
-		mergeSort(arr, 0, arr.length-1);
+//		mergeSort(arr, 0, arr.length-1);
+		quickSort(arr, 0, arr.length-1);
 		printArr(arr);
 	}
 
