@@ -1,6 +1,7 @@
 package com.raghav.prac;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 //Java Collection Framework
@@ -16,7 +17,36 @@ class AllMethods{
 			index2 = list.set(index2, temp);
 		}
 		System.out.println(list);
-	}
+	}//end swapUsingCollection
+	
+	public static void findMaxUsingCollections(List<Integer> list) {
+		
+		  	//finding max
+			int findMax = 0, max = Integer.MIN_VALUE;
+			for(int i=0;i<list.size(); i++) {
+				findMax = Math.max(list.get(i),max);
+			}//end for
+			System.out.println(findMax);
+	}//end findMaxUsingCollections
+	
+	public static void pairSumUsingBruteForce(List<Integer> list, int target) {
+		int size = list.size(), possiblePairs=0;
+		//Condition to find pair sum is the list needs to be sorted
+		Collections.sort(list);
+		//we're applying brute force to calculate the possible pairs having sum equals to target
+		for(int i=0; i<size; i++) {
+			for(int j=i+1; j<size; j++) {
+				if(list.get(i) + list.get(j) == target)
+					possiblePairs++;
+			}//end inner for
+		}//end outer for
+		
+		if(possiblePairs > 0)
+			System.out.println("we have " + possiblePairs + " possible pairs in out list which have sum equals to " + target);
+		else
+			System.out.println("No possible pairs in out list which have sum equals to " + target);
+	}//end pairSumUsingBruteForce
+	
 }
 public class ArrayLisstPrac {
 
@@ -29,13 +59,8 @@ public class ArrayLisstPrac {
 		list.add(4);
 		list.add(5);
 		
-//		//finding max
-//		int findMax = 23, max = Integer.MIN_VALUE;
-//		for(int i=0; i<list.size(); i++) {
-//			findMax = Math.max(list.get(i),max);
-//		}
-//		System.out.println(findMax);
-		AllMethods.swapUsingCollections(-9, -9, list);
+//		AllMethods.swapUsingCollections(-9, -9, list);
+		AllMethods.pairSumUsingBruteForce(list, 5);
 
 	}//end main
 }//end class
