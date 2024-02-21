@@ -4,6 +4,31 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+
+class BasicCodingQuestions {
+	
+	public static void isPrime(int num) {
+		
+		//work
+		if(num == 2) {
+			System.out.println(num + " is prime");
+		}else {
+			boolean isPrime = true;
+			for(int i=2; i<=Math.sqrt(num); i++) {
+				if(i%2==0) {
+					isPrime = false;
+				}//end if
+			}//end for
+			
+			if(isPrime == true) {
+				System.out.println(num + " is prime");
+			}else {
+				System.out.println(num + " is not prime");
+			}//end inner else
+		}//end else
+	}//end isPrime
+}//end BasicCodingQuestions
+
 public class DsaBasics {
 	
  static final int MAX_CHAR = 256;
@@ -73,10 +98,12 @@ public class DsaBasics {
 	 }
  }//end getOccuringUsingMap
 
+ 
  public static void main(String[] args)
  {
-     String str = "geeks for geeks";
+	 BasicCodingQuestions.isPrime(4);
+//     String str = "geeks for geeks";
 //     getOccurringChar(str);
-     getOccuringUsingMap(str);
+//     getOccuringUsingMap(str);
  }
 }

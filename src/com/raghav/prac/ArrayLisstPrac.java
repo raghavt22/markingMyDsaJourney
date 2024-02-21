@@ -48,6 +48,7 @@ class AllMethods{
 	}//end pairSumUsingBruteForce
 	
 	public static void pairSumUsing2PointerApproach(List<Integer> list, int target) {
+		//Time complexity will be O(n) best than the brute force approach
 		int size = list.size(), possiblePairs=0, lPointer = 0, rPointer = size-1;;
 		//Condition to find pair sum is the list needs to be sorted
 		Collections.sort(list);
