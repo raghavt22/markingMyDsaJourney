@@ -14,10 +14,10 @@ public class PairsInArray {
 //		printSubArraysPrefixArrayApproach(arr1);
 //		printSubArraysUsingKadanesAlgorithm(arr2);
 //		trappingRainWater(arr3);
-		buyAndSellStocks(arr4);
+//		buyAndSellStocks(arr4);		
 	}
 	
-	private static void buyAndSellStocks(int[] arr) {
+	public static void buyAndSellStocks(int[] arr) {
 		//profit = sellingPrice(Higher) - buyingPrice(lower)
 		int buyingPrice = Integer.MAX_VALUE, maxProfit = 0;
 		for(int i=0; i<arr.length; i++) {

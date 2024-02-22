@@ -1,27 +1,32 @@
 package com.raghav.prac;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 
 class BasicCodingQuestions {
 	
+	static List<Integer> primeList = new ArrayList<>();
+	
 	public static void isPrime(int num) {
-		
 		//work
 		if(num == 2) {
 			System.out.println(num + " is prime");
+			primeList.add(num);
 		}else {
 			boolean isPrime = true;
 			for(int i=2; i<=Math.sqrt(num); i++) {
-				if(i%2==0) {
+				if(num%i==0) {
 					isPrime = false;
 				}//end if
 			}//end for
 			
 			if(isPrime == true) {
 				System.out.println(num + " is prime");
+				primeList.add(num);
 			}else {
 				System.out.println(num + " is not prime");
 			}//end inner else
@@ -101,9 +106,12 @@ public class DsaBasics {
  
  public static void main(String[] args)
  {
-	 BasicCodingQuestions.isPrime(4);
+//	 BasicCodingQuestions.isPrime(53);
 //     String str = "geeks for geeks";
 //     getOccurringChar(str);
 //     getOccuringUsingMap(str);
+	 for(int i=51; i<=100; i++) {
+		 BasicCodingQuestions.isPrime(i);
+	 }
  }
 }
