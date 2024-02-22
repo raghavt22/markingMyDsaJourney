@@ -1,6 +1,6 @@
 package com.raghav.ArraysNormal;
 
-public class PairsInArray {
+public class ArraysRelatedQuestions {
 
 	//to implement pairs of array we should understand the concept of nested arrays
 	public static void main(String[] args) {
