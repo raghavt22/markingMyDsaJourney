@@ -14,7 +14,8 @@ public class ArraysRelatedQuestions {
 //		printSubArraysPrefixArrayApproach(arr1);
 //		printSubArraysUsingKadanesAlgorithm(arr2);
 //		trappingRainWater(arr3);
-//		buyAndSellStocks(arr4);		
+//		buyAndSellStocks(arr4);
+		maxSubArraySum(arr4);
 	}
 	
 	public static void buyAndSellStocks(int[] arr) {
@@ -141,4 +142,23 @@ public class ArraysRelatedQuestions {
 			System.out.println();
 		}//end outer for
 	}//end method
+	
+	public static int maxSubArraySum(int[] arr) {
+		int length = arr.length;
+		int maxSubArrSum = Integer.MIN_VALUE;
+		int subArrSum = 0;
+		for(int i=0; i<length; i++) {
+			for(int j=i; j<length; j++) {
+				for(int k=i; k<=j; k++) {
+					subArrSum += arr[k];
+				if(maxSubArrSum < subArrSum) {
+					maxSubArrSum = subArrSum;
+				}//end of if
+			}//end of third for loop
+		}//end of inner for loop
+			System.out.println(subArrSum);
+		subArrSum = 0;
+		}//end of outer for loop
+		return maxSubArrSum;
+	}//end maxSubArraysSum
 }//end class

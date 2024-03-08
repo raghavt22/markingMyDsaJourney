@@ -51,9 +51,10 @@ public class StringPractise {
 		String str1 = "dishonesty is the cancer for discipline";
 		String[] str2 = {"twinning","twinkle","tweerk","twist"};
 		String[] str3 = {"ABCD", "BCDE", "ACDE", "ABCEFGHIJKL"};
+		System.out.println(new StringBuilder("Raghvendra").reverse());
 		
 		//operations
 //		StringOperations.reverseString(str1);
-		System.out.println("Common Prefix --> " + StringOperations.longestCommonPrefix(str2));
-	}
-}
+//		System.out.println("Common Prefix --> " + StringOperations.longestCommonPrefix(str2));
+		}//end main
+}//end stringPractise
